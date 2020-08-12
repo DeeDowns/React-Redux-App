@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchMovies } from '../store/actions/studioActions'
+import StudioCard from './StudioCard'
 
 
 const Studio = props => {
@@ -23,7 +24,10 @@ const Studio = props => {
                 props.movies.length > 0 ? (
                     <div>
                        {props.movies.map((movie) => (
-                           <h2 key={movie.id}>{movie.title}</h2>
+                           <div>
+                                <h2>{movie.title}</h2>
+                                <StudioCard key={movie.id} movieData={movie}/>
+                            </div>
                        ))} 
                     </div>
                 ) : null
@@ -36,8 +40,8 @@ const mapStateToProps = state => {
     console.log('mapSTP state', state)
     return {
         movies: state.studioReducer.movies,
-        isLoading: state.studioReducer.isLoading,
-        error: state.studioReducer.error
+        isLoading: state.isLoading,
+        error: state.error
     }
 }
 

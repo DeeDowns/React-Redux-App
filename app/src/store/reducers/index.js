@@ -6,3 +6,6 @@ import { studioReducer } from './studioReducer'
 export const rootReducer = combineReducers({
     studioReducer
 })
+
+
+
