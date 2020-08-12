@@ -1,2 +1,8 @@
 // REDUCER INDEX
-// export { studioReducer as reducer } from './studioReducer'
+
+import { combineReducers } from 'redux'
+import { studioReducer } from './studioReducer'
+
+export const rootReducer = combineReducers({
+    studioReducer
+})

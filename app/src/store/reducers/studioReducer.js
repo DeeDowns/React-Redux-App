@@ -1,4 +1,4 @@
-import { FETCH_MOVIES_START, FETCH_MOVIES_SUCCESS } from '../actions'
+import { FETCH_MOVIES_START, FETCH_MOVIES_SUCCESS } from '../actions/studioActions'
 
 const initialState = {
     movies: [],
@@ -14,6 +14,12 @@ export const studioReducer = (state = initialState, action) => {
                 isLoading: true,
                 error: ''
             }
+        case FETCH_MOVIES_SUCCESS: 
+        return {
+            ...state, 
+            isloading: false,
+            movies: action.payload
+        }
         default: 
         return state
 

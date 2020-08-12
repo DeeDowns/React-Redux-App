@@ -4,8 +4,10 @@ import { fetchMovies } from '../store/actions/studioActions'
 
 
 const Studio = props => {
-    useEffect(() => {
+    console.log('Studio props', props)
 
+    useEffect(() => {
+        props.fetchMovies()
     }, [])
 
     return (
@@ -17,17 +19,26 @@ const Studio = props => {
             {
                 props.error ? <h4 style={{ color: 'orange'}}>oops something went wrong... {props.error}</h4> : null
             }
+            {
+                props.movies.length > 0 ? (
+                    <div>
+                       {props.movies.map((movie) => (
+                           <h2 key={movie.id}>{movie.title}</h2>
+                       ))} 
+                    </div>
+                ) : null
+            }
         </section>
     )
 }
 
 const mapStateToProps = state => {
-    console.log(state)
+    console.log('mapSTP state', state)
     return {
-        movies: state.movies,
-        isLoading: state.isLoading,
-        error: state.error
+        movies: state.studioReducer.movies,
+        isLoading: state.studioReducer.isLoading,
+        error: state.studioReducer.error
     }
 }
 
-export default connect(mapStateToProps, {})(Studio)
+export default connect(mapStateToProps, { fetchMovies })(Studio)
