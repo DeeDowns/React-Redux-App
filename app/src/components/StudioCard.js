@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import {
-    Card, CardText, CardBody, CardTitle, CardSubtitle, Button, CardDeck, Modal, ModalHeader, ModalBody, ModalFooter, Collapse, CardFooter
+    Button, Modal, ModalHeader, ModalBody, ModalFooter
 } from 'reactstrap'
+import '../styles/StudioCard.css'
 
 
 const StudioCard = (props) => {
@@ -13,18 +14,17 @@ const StudioCard = (props) => {
     
 
     return (
-    <div>
-        <div>
+        <div className='movie-card'>
         <Button color="danger" onClick={toggle}>More Info</Button>
         <Modal isOpen={modal} toggle={toggle} className={className}>
-            <ModalHeader toggle={toggle}>{movieData.director}, {movieData.release_date}</ModalHeader>
-            <ModalBody>{movieData.description}</ModalBody>
+            <ModalHeader toggle={toggle}>Directed by {movieData.director}, {movieData.release_date}</ModalHeader>
+            <ModalBody><span>Description:</span> {movieData.description}</ModalBody>
             <ModalFooter>
             <Button color="secondary" onClick={toggle}>Close</Button>
             </ModalFooter>
         </Modal>
     </div>
-    </div>
+
 )
 
 }
